@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrustD AI - Innovative AI Solutions</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <svg class="logo-icon" width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 5 L85 20 L85 50 C85 70 50 95 50 95 C50 95 15 70 15 50 L15 20 Z" stroke="#ffffff" stroke-width="4" fill="none"/>
+                    <path d="M50 25 L70 35 L70 55 C70 65 50 80 50 80 C50 80 30 65 30 55 L30 35 Z" stroke="#ffffff" stroke-width="3" fill="none"/>
+                </svg>
+                <span>TrustD AI</span>
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Turn Clicks into Customers: Smart Lead Verification Powered by Gen AI!</h1>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h2>Improve Efficiency of your Online Marketing Efforts</h2>
+                    <p>Understand your leads better and make smarter choices for optimal conversion of your site visitors</p>
+                </div>
+                <div class="feature-item">
+                    <h2>Transforming Complexity into Clarity for your Potential Customers</h2>
+                    <p>Provide an easy way for your site visitors to discover your offerings using TrustD AI</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>The Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-header">
+                        <h3>Shailesh Garg</h3>
+                        <a href="https://www.linkedin.com/in/gshailesh/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="linkedin-icon">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <span class="role">CEO & CTO</span>
+                    <p>Shailesh Garg has 20+ years of engineering leadership experience, including roles as CTO at RevX and Managing Director – Engineering at AnyMind Group. A former Amazon engineer, he brings deep expertise in ad-tech, e-commerce, and generative AI, driven by a passion for solving real-world problems with advanced technologies.</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-header">
+                        <h3>Rajat Das</h3>
+                        <a href="https://www.linkedin.com/in/rajat-das-5a65101a/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="linkedin-icon">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <span class="role">CPO</span>
+                    <p>Rajat has 13+ years of experience in driving product strategy and innovation across diverse industries. He has worked extensively with data.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get in touch</h2>
+            <div class="contact-info">
+                <div class="email">
+                    <a href="mailto:sales@trustdai.in">sales@trustdai.in</a>
+                </div>
+                <div class="phone-numbers">
+                    <a href="tel:+919986537666">+91-9986537666</a>
+                    <a href="tel:+917899805953">+91-7899805953</a>
+                </div>
+                <button class="contact-button" onclick="toggleContactForm()">Contact Us</button>
+            </div>
+
+            <form id="contactForm" class="hidden" onsubmit="return handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone" 
+                           placeholder="+91 9986537666"
+                           title="Please enter a valid phone number. You can include country code, spaces and hyphens" 
+                           required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+            <div id="loadingSpinner" class="loading-spinner hidden">
+                <div class="spinner"></div>
+                <p>Sending your message...</p>
+            </div>
+            <div id="formStatus" class="form-status"></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 TrustD AI. Owned by VitanuGenAI Technology Pvt. Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
