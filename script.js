@@ -70,13 +70,15 @@ async function handleSubmit(event) {
         name: form.name.value,
         email: form.email.value,
         phone: phoneInput.value.replace(/[\s-]/g, ''), // Store cleaned phone number
+        company: form.company.value,
+        leadVolume: form.leadVolume.value,
         message: form.message.value
     };
 
     try {
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxkvWz8zSaIoVfbfgGBewn6VlVMtr6NID_wvC-IoIA94U_Elpb7TdAOxB0ktDGzoRk/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx_YyFn8AzvadtUK-myAN9DWE_KVmGp9KfHSGn237MMNwiIe1-5EAo9tBnKCb7Irqt1/exec';
         
-        await fetch(SCRIPT_URL, {
+        const response = await fetch(SCRIPT_URL, {
             method: 'POST',
             mode: 'no-cors',
             headers: {
@@ -85,6 +87,7 @@ async function handleSubmit(event) {
             body: JSON.stringify(formData)
         });
 
+        // Since we're using no-cors, we'll assume success if we get here
         // Hide loading spinner
         loadingSpinner.classList.add('hidden');
 
@@ -93,10 +96,8 @@ async function handleSubmit(event) {
         formStatus.className = 'form-status success';
         formStatus.style.display = 'block';
         
-        // Reset the form and hide it
+        // Reset the form but don't hide it
         form.reset();
-        form.classList.add('hidden');
-        contactButton.textContent = 'Contact Us';
         
         // Ensure the status message is visible
         formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -122,3 +123,11 @@ async function handleSubmit(event) {
 
     return false;
 }
+
+// Add event listener for form submission
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    if (form) {
+        form.addEventListener('submit', handleSubmit);
+    }
+});
