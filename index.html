@@ -332,5 +332,39 @@
     </div>
 
     <script src="script.js"></script>
+
+     <!-- Include the chat widget script -->
+  <script src="https://d2ug12dkmgcsv2.cloudfront.net/chat-widget.js"></script>
+  <script>
+    let widgetInstance = null;
+    // Initialize button
+    if (widgetInstance) {
+        widgetInstance.destroy();
+    }
+    const token = 'trustdai_tk_2025_04_30_asw37s313za';
+    const primaryColor = 'black';
+    const secondaryColor = 'white';
+    const shadeColor = 'gray';
+    const logoUrl = 'https://d2ug12dkmgcsv2.cloudfront.net/logo.png';
+    const backgroundUrl = 'https://d2ug12dkmgcsv2.cloudfront.net/bkgrnd_image.png';
+    const headerText = 'Talk To Us';
+    const apiBaseUrl = 'http://localhost:5000';
+    const signInMessage = 'Sign in to get started';
+    // In your demo page's JS, ensure these are picked up and passed to initChatWidget
+    // Example (pseudo):
+    // secondaryColor: document.getElementById('secondaryColor').value,
+    // shadeColor: document.getElementById('shadeColor').value,
+    widgetInstance = window.ChatWidget.initChatWidget({
+        token: token,
+        primaryColor: primaryColor,
+        secondaryColor: secondaryColor,
+        shadeColor: shadeColor,
+        logoUrl: logoUrl || undefined,
+        backgroundUrl: backgroundUrl || undefined,
+        apiBaseUrl: apiBaseUrl,
+        headerText: headerText,
+        signInMessage: signInMessage
+    });
+  </script>
 </body>
 </html>
