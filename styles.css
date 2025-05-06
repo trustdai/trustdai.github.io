@@ -329,6 +329,19 @@ section::before {
     font-weight: 700;
     color: #ffffff;
     margin-bottom: 16px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ffffff, transparent);
 }
 
 .section-header p {
@@ -959,10 +972,14 @@ section::before {
 
 /* Footer */
 footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
     background-color: #0f1419;
     color: #ffffff;
     padding: 30px 0;
-    text-align: center;
     position: relative;
 }
 
@@ -974,6 +991,20 @@ footer::before {
     right: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+footer p {
+    margin: 0;
+    padding: 5px 0;
+    white-space: nowrap;
 }
 
 /* Contact Info Styles */
@@ -1054,6 +1085,90 @@ footer::before {
 .schedule-btn:hover {
     background: #f8f9fa;
     transform: translateY(-2px);
+}
+
+#financial-services h2 {
+    margin-bottom: 20px;
+}
+
+#financial-services .container {
+    padding: 20px;
+}
+
+#financial-services h2 {
+    margin-bottom: 20px;
+}
+
+#financial-services .content {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+#financial-services .text-content {
+    width: 700px;
+    display: flex;
+    align-items: center;
+}
+
+#financial-services .text-content p {
+    margin: 0;
+    padding-right: 20px;
+}
+
+#financial-services .video-content {
+    width: 500px;
+}
+
+#financial-services .video-content .video-placeholder {
+    width: 100%;
+    height: 280px;
+}
+
+#financial-services .video-content iframe {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16/9;
+}
+
+#travel .container {
+    padding: 20px;
+}
+
+#travel h2 {
+    margin-bottom: 20px;
+}
+
+#travel .content {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+#travel .text-content {
+    width: 700px;
+    display: flex;
+    align-items: center;
+}
+
+#travel .text-content p {
+    margin: 0;
+    padding-right: 20px;
+}
+
+#travel .video-content {
+    width: 500px;
+}
+
+#travel .video-content .video-placeholder {
+    width: 100%;
+    height: 280px;
+}
+
+#travel .video-content iframe {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16/9;
 }
 
 @media (max-width: 768px) {
@@ -1138,4 +1253,25 @@ footer::before {
 
 .close-modal:hover {
     color: #cccccc;
+}
+
+p {
+    margin: 0;
+    padding-right: 20px;
+}
+
+.chat-widget-info {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.talk-to-us-btn {
+    font-weight: bold;
+    text-decoration: underline !important;
+    color: #ffffff;
+    transition: color 0.3s;
+}
+
+.talk-to-us-btn:hover {
+    color: #3498db;
 }
