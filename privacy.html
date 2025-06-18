@@ -4,60 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - TrustdAI</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="alternate icon" href="favicon.ico">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        .privacy-content {
-            max-width: 800px;
-            margin: 120px auto 40px;
-            padding: 20px;
-            line-height: 1.6;
-            background-color: #0f1419;
-        }
-        .privacy-content h1 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #ffffff;
-        }
-        .privacy-content h2 {
-            margin-top: 25px;
-            margin-bottom: 15px;
-            color: #ffffff;
-        }
-        .privacy-content p, .privacy-content ul {
-            margin-bottom: 15px;
-            color: #ffffff;
-        }
-        .privacy-content ul {
-            margin-left: 20px;
-        }
-    </style>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="alternate icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="style_main.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
-    <header>
-        <nav>
+    <header class="header">
+        <nav class="nav-container">
             <div class="logo">
-                <svg class="logo-icon" width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 5 L85 20 L85 50 C85 70 50 95 50 95 C50 95 15 70 15 50 L15 20 Z" stroke="#ffffff" stroke-width="4" fill="none"/>
-                    <path d="M50 25 L70 35 L70 55 C70 65 50 80 50 80 C50 80 30 65 30 55 L30 35 Z" stroke="#ffffff" stroke-width="3" fill="none"/>
-                </svg>
-                <span>TrustdAI</span>
+                <img src="assets/trustdai_logo.svg" alt="TrustdAI Logo" class="logo-svg">
+                <h1>TrustdAI</h1>
             </div>
-            <ul>
-                <li><a href="index.html">Home</a></li>
+            <ul class="nav-links">
+                <li><a href="main.html">Home</a></li>
+                <li><a href="product.html">Product</a></li>
+                <li><a href="main.html#demo">Demo</a></li>
+                <li class="dropdown">
+                    <a href="main.html#resources" class="dropdown-toggle">Resources</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </li>
+                <li><a href="main.html#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <div class="privacy-content">
-            <h1>Privacy Policy</h1>
-            <p><strong>Effective Date: March 7, 2025</strong></p>
+    <main class="container">
+        <h1>Privacy Policy</h1>
+        <p>Effective Date: March 7, 2025</p>
 
+        <section>
             <h2>1. Introduction</h2>
             <p>Welcome to TrustdAI. Your privacy is important to us. This privacy policy outlines how we collect, use, and protect your information when you visit our website.</p>
+        </section>
 
+        <section>
             <h2>2. Information Collection</h2>
             <p>We may collect personal information from you when you visit our site, register, subscribe to our newsletter, or interact with us in other ways. The types of information we may collect include:</p>
             <ul>
@@ -66,7 +50,9 @@
                 <li>Phone number</li>
                 <li>Any other information you voluntarily provide</li>
             </ul>
+        </section>
 
+        <section>
             <h2>3. Use of Information</h2>
             <p>The information we collect may be used in the following ways:</p>
             <ul>
@@ -75,22 +61,34 @@
                 <li>To send periodic emails regarding your order or other products and services</li>
                 <li>To respond to inquiries and/or other requests or questions</li>
             </ul>
+        </section>
 
+        <section>
             <h2>4. Cookies and Tracking Technologies</h2>
             <p>Our website may use cookies to enhance user experience. You can choose to accept or decline cookies. Most web browsers automatically accept cookies, but you can modify your browser setting to decline cookies if you prefer.</p>
+        </section>
 
+        <section>
             <h2>5. Data Sharing</h2>
             <p>We do not sell, trade, or otherwise transfer your personal information to outside parties without your consent, except to provide services you have requested or as required by law.</p>
+        </section>
 
+        <section>
             <h2>6. User Rights</h2>
             <p>You have the right to request access to the personal information we hold about you, to request corrections to that information, or to request that we delete your information.</p>
+        </section>
 
+        <section>
             <h2>7. Security Measures</h2>
             <p>We implement a variety of security measures to maintain the safety of your personal information. However, no method of transmission over the Internet or method of electronic storage is 100% secure.</p>
+        </section>
 
+        <section>
             <h2>8. Changes to the Privacy Policy</h2>
             <p>We may update this privacy policy from time to time. We will notify you about significant changes in the way we treat personal information by sending a notice to the primary email address specified in your account or by placing a prominent notice on our site.</p>
+        </section>
 
+        <section>
             <h2>9. Data Deletion</h2>
             <p>You have the right to request the deletion of your personal data that we have collected. To exercise this right:</p>
             <ul>
@@ -106,17 +104,67 @@
                 <li>Maintain a record of your deletion request as required by law</li>
             </ul>
             <p>Please note that some information may be retained for legal, security, or business requirements. We will inform you if this is the case.</p>
+        </section>
 
+        <section>
             <h2>10. Contact Information</h2>
             <p>If you have any questions about this privacy policy, the practices of this site, or your dealings with this site, please contact us at: <a href="mailto:admin@trustdai.in">admin@trustdai.in</a></p>
-        </div>
+            <p>Owned by VitanugenAI Technology Private Limited</p>
+        </section>
     </main>
 
-    <footer>
+    <!-- Contact Section -->
+    <footer id="contact-section" class="footer">
         <div class="container">
-            <p>Owned by VitanugenAI Technology Private Limited</p>
-            <p><a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a></p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TrustdAI</h3>
+                    <p>AI-Powered Marketing Solutions</p>
+                    <p class="ownership">Owned by VitanuGenAI Technology Pvt. Ltd.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="product.html">Product</a>
+                    <a href="main.html#demo">Demo</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="faq.html">FAQ</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>sales@trustdai.in</p>
+                    <p>+91-9986537666</p>
+                    <p>+91-7899805953</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TrustdAI. All rights reserved.</p>
+            </div>
         </div>
     </footer>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Contact Us</h2>
+            <div class="contact-details">
+                <p>Get in touch to learn how we can help scale your lead engagement</p>
+                <p><a href="mailto:sales@trustdai.in">sales@trustdai.in</a></p>
+                <p><a href="tel:+919986537666">+91-9986537666</a></p>
+                <p><a href="tel:+917899805953">+91-7899805953</a></p>
+            </div>
+            <div class="contact-actions">
+                <a href="https://calendly.com/trustdai" class="schedule-button" target="_blank">Schedule a Meeting</a>
+                <a href="#" class="talk-button" id="openChat">Talk to Us</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
 </body>
 </html>

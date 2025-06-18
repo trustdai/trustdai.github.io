@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.94 61.94" id="fb-messenger">
+  <defs>
+    <linearGradient id="a" x1="30.97" x2="30.97" y1="61.94" gradientUnits="userSpaceOnUse">
+      <stop offset=".01" stop-color="#3f83f7"></stop>
+      <stop offset=".29" stop-color="#3f8bf7"></stop>
+      <stop offset=".73" stop-color="#3fa1f7"></stop>
+      <stop offset="1" stop-color="#3fb2f7"></stop>
+    </linearGradient>
+    <linearGradient id="b" x1="30.97" x2="30.97" y1="48.78" y2="13.16" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#b1e3fa"></stop>
+      <stop offset=".03" stop-color="#b5e4fa"></stop>
+      <stop offset=".29" stop-color="#d5f0fc"></stop>
+      <stop offset=".54" stop-color="#ecf8fe"></stop>
+      <stop offset=".78" stop-color="#fafdff"></stop>
+      <stop offset=".99" stop-color="#fff"></stop>
+    </linearGradient>
+  </defs>
+  <rect width="61.94" height="61.94" fill="url(#a)" rx="16.96"></rect>
+  <path fill="url(#b)" d="M48,25.2a16.27,16.27,0,0,0-5.51-8,18,18,0,0,0-10.14-3.94,18.49,18.49,0,0,0-5.55.4,17.59,17.59,0,0,0-9.18,5.18A15.53,15.53,0,0,0,13.3,30.87a14.61,14.61,0,0,0,1,4.46,16.4,16.4,0,0,0,5.32,7,.48.48,0,0,1,.21.43q0,2.85,0,5.7a1,1,0,0,0,0,.3.58.58,0,0,0,.25-.11l5.59-3.09a.48.48,0,0,1,.37,0,18.17,18.17,0,0,0,3.86.62A19.12,19.12,0,0,0,36,45.5a17.65,17.65,0,0,0,8.85-5.59,15.55,15.55,0,0,0,3.79-9.24A15.15,15.15,0,0,0,48,25.2ZM32.72,35.39l-.24-.26c-1.35-1.45-2.71-2.9-4.06-4.36l-.07-.06c-.14-.16-.14-.16-.32-.06L23.77,33l-4,2.22a.45.45,0,0,1-.25.09l1.13-1.21,8.3-8.86h0c.18-.2.16-.17.32,0l3.82,4c.18.18.36.36.52.55s.16.1.28,0l2.19-1.23,6-3.36a.32.32,0,0,1,.22-.09Z"></path>
+</svg>

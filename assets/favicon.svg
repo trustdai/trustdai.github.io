@@ -1,0 +1,12 @@
+<svg width="32" height="32" viewBox="0 0 333.333 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with website primary color -->
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  
+  <!-- Logo graphic - outer shield with primary color -->
+  <path d="m166.667 16.667 116.667 50v100c0 66.667 -116.667 150 -116.667 150S50 233.333 50 166.667V66.667Z" 
+        stroke="#2563eb" stroke-width="13.3333" fill="none"/>
+  
+  <!-- Logo graphic - inner shield with secondary color -->
+  <path d="m166.667 83.333 66.667 33.333v66.667c0 33.333 -66.667 83.333 -66.667 83.333S100 216.667 100 183.333V116.667Z" 
+        stroke="#1e40af" stroke-width="10" fill="none"/>
+</svg>
