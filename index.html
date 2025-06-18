@@ -251,7 +251,7 @@
     <div id="crate-widget"></div>
     
     <style>
-        /* Inline styles specific to main.html */
+        /* Inline styles specific to index.html */
     </style>
 
     <script src="script.js"></script>
@@ -307,15 +307,15 @@
         contactLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 // If not on the home page, navigate there first
-                if (!window.location.pathname.endsWith('main.html') && 
+                if (!window.location.pathname.endsWith('index.html') && 
                     !window.location.pathname.endsWith('/')) {
-                    window.location.href = 'main.html#contact-section';
+                    window.location.href = 'index.html#contact-section';
                     e.preventDefault();
                     return;
                 }
                 
                 // If already on home page, just open the chat
-                if (window.location.pathname.endsWith('main.html') || 
+                if (window.location.pathname.endsWith('index.html') || 
                     window.location.pathname.endsWith('/')) {
                     e.preventDefault();
                     openChatWidget();
