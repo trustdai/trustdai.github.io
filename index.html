@@ -42,12 +42,39 @@
 <body>
     <!-- Header Section -->
     <header class="header">
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const menuToggle = document.querySelector('.menu-toggle');
+                const navLinks = document.querySelector('.nav-links');
+                
+                if (menuToggle) {
+                    menuToggle.addEventListener('click', function() {
+                        navLinks.classList.toggle('active');
+                        this.classList.toggle('active');
+                    });
+                }
+                
+                // Close mobile menu when clicking on a nav link
+                const navItems = document.querySelectorAll('.nav-links a');
+                navItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                    });
+                });
+            });
+        </script>
         <nav class="nav-container">
             <div class="logo">
                 <img src="assets/trustdai_logo.svg" alt="TrustdAI Logo" class="logo-svg">
                 <h1>TrustdAI</h1>
             </div>
-            <ul class="nav-links">
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="mainNav">
                 <li><a href="product.html">Product</a></li>
                 <li><a href="#demo">Demo</a></li>
                 <li class="dropdown">
