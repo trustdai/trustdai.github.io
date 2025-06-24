@@ -322,10 +322,10 @@
        widgetInstance.destroy();
    }
    const token = 'trustdai_tk_2025_04_30_asw37s313za';
-   const primaryColor = 'black';
-   const secondaryColor = 'white';
-   const shadeColor = 'gray';
-   const logoUrl = 'https://d2ug12dkmgcsv2.cloudfront.net/logo.png';
+   const primaryColor = '#2563eb';  /* Primary blue from your website */
+   const secondaryColor = '#1e40af'; /* Darker blue for hover states */
+   const shadeColor = '#f3f4f6';    /* Light gray for backgrounds */
+   const logoUrl = 'assets/trustdai_logo.svg'; // Using website's logo
    const backgroundUrl = 'https://d2ug12dkmgcsv2.cloudfront.net/bkgrnd_image.png';
    const headerText = 'Talk To Us';
    const apiBaseUrl = 'https://api.trustdai.in';
@@ -334,13 +334,41 @@
    // Create a style element to inject into the iframe
    const style = document.createElement('style');
    style.textContent = `
+       /* Chat container */
        .chat-container, .messages-container {
-           background-color: #e5ddd5 !important;
+           background-color: #f3f4f6 !important;
            background-image: url('https://d2ug12dkmgcsv2.cloudfront.net/bkgrnd_image.png') !important;
            background-size: cover !important;
            background-attachment: fixed !important;
        }
-   `;
+       /* Header */
+       .chat-header {
+           background-color: #2563eb !important;
+           color: white !important;
+       }
+       /* User message bubble */
+       .user-message {
+           background-color: #2563eb !important;
+           color: white !important;
+       }
+       /* Bot message bubble */
+       .bot-message {
+           background-color: white !important;
+           color: #1f2937 !important;
+       }
+       /* Input area */
+       .chat-input-container {
+           background-color: white !important;
+           border-top: 1px solid #e5e7eb !important;
+       }
+       /* Buttons */
+       .send-button, .action-button {
+           background-color: #2563eb !important;
+           color: white !important;
+       }
+       .send-button:hover, .action-button:hover {
+           background-color: #1e40af !important;
+       }`;
    document.head.appendChild(style);
 
    // Initialize the widget
