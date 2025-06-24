@@ -132,8 +132,27 @@ body {
     display: flex;
     align-items: center;
     margin-top: 70px; /* Height of your header */
-    min-height: calc(100vh - 70px); /* Full viewport height minus header */
+    min-height: calc(50vh - 70px); /* Reduced to half viewport height minus header */
     box-sizing: border-box;
+}
+
+/* Product Page Hero */
+.product-page .hero {
+    min-height: calc(50vh - 70px); /* Half viewport height minus header */
+    padding: 2rem 1rem; /* Adjusted padding */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-page .hero .container {
+    width: 100%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.product-page .hero-content {
+    margin: 0 auto;
 }
 
 /* For larger screens */
