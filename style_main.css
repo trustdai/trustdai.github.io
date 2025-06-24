@@ -928,21 +928,34 @@ body {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
+/* Chat container background */
+#crate-widget .chat-container {
+    background-color: #e5ddd5; /* WhatsApp-style light gray */
+    min-height: 100%;
+}
+
+/* Chat message area background */
+#crate-widget .messages-container {
+    background-color: #e5ddd5; /* WhatsApp-style light gray */
+}
+
 /* Chat message bubbles */
 #crate-widget .message-bubble {
-    background-color: #f5f5f5; /* Light gray background for messages */
-    border-radius: 1rem;
-    padding: 0.75rem 1rem;
-    margin: 0.5rem 0;
+    background-color: #ffffff; /* White for received messages */
+    border-radius: 0.5rem 1.125rem 1.125rem 1.125rem;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem 1rem;
     max-width: 80%;
     line-height: 1.4;
+    box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
 }
 
 /* User message bubbles */
 #crate-widget .user-message {
     background-color: #e3f2fd; /* Light blue for user messages */
+    border-radius: 1.125rem 0.5rem 1.125rem 1.125rem;
     margin-left: auto;
-    margin-right: 0;
+    margin-right: 1rem;
 }
 
 /* Footer */
