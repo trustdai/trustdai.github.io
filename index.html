@@ -331,6 +331,19 @@
    const apiBaseUrl = 'https://api.trustdai.in';
    const signInMessage = 'Sign in to get started';
    
+   // Create a style element to inject into the iframe
+   const style = document.createElement('style');
+   style.textContent = `
+       .chat-container, .messages-container {
+           background-color: #e5ddd5 !important;
+           background-image: url('https://d2ug12dkmgcsv2.cloudfront.net/bkgrnd_image.png') !important;
+           background-size: cover !important;
+           background-attachment: fixed !important;
+       }
+   `;
+   document.head.appendChild(style);
+
+   // Initialize the widget
    widgetInstance = window.ChatWidget.initChatWidget({
        token: token,
        primaryColor: primaryColor,
@@ -340,7 +353,14 @@
        backgroundUrl: backgroundUrl || undefined,
        apiBaseUrl: apiBaseUrl,
        headerText: headerText,
-       signInMessage: signInMessage
+       signInMessage: signInMessage,
+       onLoad: function() {
+           // Try to inject styles after the iframe loads
+           const iframe = document.querySelector('#crate-widget iframe');
+           if (iframe && iframe.contentDocument) {
+               iframe.contentDocument.head.appendChild(style);
+           }
+       }
    });
 
     // Function to open chat widget

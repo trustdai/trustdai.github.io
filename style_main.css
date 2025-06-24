@@ -921,11 +921,18 @@ body {
     bottom: 20px;
     right: 20px;
     z-index: 1000;
+    width: 400px;
+    height: 600px;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 #crate-widget iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border: none;
     border-radius: 1rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 
