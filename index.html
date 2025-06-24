@@ -331,6 +331,12 @@
    const apiBaseUrl = 'https://api.trustdai.in';
    const signInMessage = 'Sign In to begin Interactive Experience';
    
+   // First, destroy any existing instance
+   if (window.ChatWidget && window.ChatWidget.destroy) {
+       window.ChatWidget.destroy();
+   }
+   
+   // Initialize with background settings
    widgetInstance = window.ChatWidget.initChatWidget({
        token: token,
        primaryColor: primaryColor,
@@ -338,9 +344,16 @@
        shadeColor: shadeColor,
        logoUrl: logoUrl,
        backgroundUrl: backgroundUrl,
+       backgroundColor: '#e5ddd5', // WhatsApp-style light gray
        headerText: headerText,
        apiBaseUrl: apiBaseUrl,
-       signInMessage: signInMessage
+       signInMessage: signInMessage,
+       styles: {
+           chatContainer: {
+               'background-color': '#e5ddd5',
+               'background-image': 'url(' + backgroundUrl + ')'
+           }
+       }
    });
 
     // Function to open chat widget
