@@ -331,9 +331,26 @@
    const apiBaseUrl = 'https://api.trustdai.in';
    const signInMessage = 'Sign in to get started';
    
-   // Create a style element to inject into the iframe
+   // Create a style element to properly scope the chat widget styles
    const style = document.createElement('style');
+   style.id = 'chat-widget-styles';
    style.textContent = `
+       /* Ensure the widget container is properly contained */
+       #crate-widget {
+           position: fixed;
+           bottom: 0;
+           right: 0;
+           z-index: 9999;
+           width: auto;
+           height: auto;
+           overflow: hidden;
+       }
+       /* Style the iframe to be contained within the widget */
+       #crate-widget iframe {
+           border: none !important;
+           background: transparent !important;
+           display: block;
+       }
        /* Chat container */
        .chat-container, .messages-container {
            background-color: #f3f4f6 !important;
@@ -383,10 +400,54 @@
        headerText: headerText,
        signInMessage: signInMessage,
        onLoad: function() {
-           // Try to inject styles after the iframe loads
+           // Inject styles after the iframe loads
            const iframe = document.querySelector('#crate-widget iframe');
-           if (iframe && iframe.contentDocument) {
-               iframe.contentDocument.head.appendChild(style);
+           if (iframe) {
+               // Create a new style element for the iframe
+               const iframeStyle = document.createElement('style');
+               iframeStyle.textContent = `
+                   /* Chat container */
+                   .chat-container, .messages-container {
+                       background-color: #f3f4f6 !important;
+                       background-image: url('${backgroundUrl}') !important;
+                       background-size: cover !important;
+                       background-attachment: fixed !important;
+                   }
+                   /* Header */
+                   .chat-header {
+                       background-color: #2563eb !important;
+                       color: white !important;
+                   }
+                   /* User message bubble */
+                   .user-message {
+                       background-color: #2563eb !important;
+                       color: white !important;
+                   }
+                   /* Bot message bubble */
+                   .bot-message {
+                       background-color: white !important;
+                       color: #1f2937 !important;
+                   }
+                   /* Input area */
+                   .chat-input-container {
+                       background-color: white !important;
+                       border-top: 1px solid #e5e7eb !important;
+                   }
+                   /* Buttons */
+                   .send-button, .action-button {
+                       background-color: #2563eb !important;
+                       color: white !important;
+                   }
+                   .send-button:hover, .action-button:hover {
+                       background-color: #1e40af !important;
+                   }`;
+               
+               // Add a small delay to ensure iframe is fully loaded
+               setTimeout(() => {
+                   if (iframe.contentDocument) {
+                       iframe.contentDocument.head.appendChild(iframeStyle);
+                   }
+               }, 500);
            }
        }
    });
