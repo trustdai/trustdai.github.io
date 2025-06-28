@@ -456,6 +456,39 @@
        [class*='Input'],
        [class*='textInput'] {
            color: #1f2937 !important; /* Dark text for input */
+       }
+       
+       /* Target only user messages, email, and send button */
+       .user-message,
+       [class*='user-message'],
+       [class*='usermessage'],
+       [class*='message'][class*='user'],
+       [class*='message'][class*='sent'],
+       .user-email,
+       [class*='user-email'],
+       [class*='userEmail'],
+       [class*='email-display'],
+       .send-button,
+       [class*='send-button'],
+       [class*='sendButton'] {
+           color: white !important;
+       }
+       
+       /* Ensure text in these elements is also white */
+       .user-message *,
+       [class*='user-message'] *,
+       [class*='usermessage'] *,
+       [class*='message'][class*='user'] *,
+       [class*='message'][class*='sent'] * {
+           color: white !important;
+       }
+       
+       /* Keep input fields dark for better readability */
+       input:not([class*='user']):not([class*='send']),
+       textarea:not([class*='user']):not([class*='send']),
+       [class*='input']:not([class*='user']):not([class*='send']),
+       [class*='Input']:not([class*='user']):not([class*='send']) {
+           color: #1f2937 !important;
        }`;
    document.head.appendChild(style);
 
