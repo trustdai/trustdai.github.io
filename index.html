@@ -409,6 +409,31 @@
        #chat-close:hover {
            opacity: 1 !important;
            transform: scale(1.1) !important;
+       }
+       /* User message text */
+       .user-message,
+       .user-message *,
+       .user-message p,
+       .user-message span,
+       .user-message div {
+           color: white !important;
+       }
+       /* Logout button */
+       .logout-button,
+       [class*='logout'],
+       [class*='sign-out'],
+       [class*='signout'] {
+           color: white !important;
+           border: 1px solid white !important;
+           background-color: transparent !important;
+       }
+       /* User email display */
+       .user-email,
+       [class*='email'],
+       [class*='user-info'],
+       [class*='userInfo'] {
+           color: white !important;
+           opacity: 0.9 !important;
        }`;
    document.head.appendChild(style);
 
