@@ -410,13 +410,18 @@
            opacity: 1 !important;
            transform: scale(1.1) !important;
        }
-       /* User message text */
+       /* User message text - more specific targeting */
        .user-message,
        .user-message *,
        .user-message p,
        .user-message span,
-       .user-message div {
+       .user-message div,
+       [class*='message'][class*='user'],
+       [class*='message'][class*='sent'],
+       [class*='bubble'][class*='user'],
+       [class*='message-content'] {
            color: white !important;
+           fill: white !important; /* For SVG icons */
        }
        /* Logout button */
        .logout-button,
@@ -431,9 +436,26 @@
        .user-email,
        [class*='email'],
        [class*='user-info'],
-       [class*='userInfo'] {
+       [class*='userInfo'],
+       [class*='user-email'],
+       [class*='userEmail'] {
            color: white !important;
            opacity: 0.9 !important;
+       }
+       /* Send button text */
+       .send-button,
+       [class*='send'],
+       [class*='Send'],
+       .action-button,
+       [class*='button'] {
+           color: white !important;
+       }
+       /* Input field text */
+       .chat-input,
+       [class*='input'],
+       [class*='Input'],
+       [class*='textInput'] {
+           color: #1f2937 !important; /* Dark text for input */
        }`;
    document.head.appendChild(style);
 
