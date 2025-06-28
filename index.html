@@ -322,10 +322,10 @@
        widgetInstance.destroy();
    }
    const token = 'trustdai_tk_2025_04_30_asw37s313za';
-   const primaryColor = '#2563eb';  /* Primary blue from your website */
-   const secondaryColor = '#1e40af'; /* Darker blue for hover states */
-   const shadeColor = '#f3f4f6';    /* Light gray for backgrounds */
-   const logoUrl = 'assets/trustdai_logo.svg'; // Using website's logo
+    const primaryColor = '#1e40af';  /* Slightly darker blue for better contrast */
+    const secondaryColor = '#1e40af'; /* Same as primary for consistency */
+    const shadeColor = '#f3f4f6';    /* Light gray for backgrounds */
+    const logoUrl = 'assets/trustdai_logo.svg'; // Relative path to logo
    const backgroundUrl = 'https://d2ug12dkmgcsv2.cloudfront.net/bkgrnd_image.png';
    const headerText = 'Talk To Us';
    const apiBaseUrl = 'https://api.trustdai.in';
@@ -360,12 +360,12 @@
        }
        /* Header */
        .chat-header {
-           background-color: #2563eb !important;
+           background-color: #1e40af !important;
            color: white !important;
        }
        /* User message bubble */
        .user-message {
-           background-color: #2563eb !important;
+           background-color: #1e40af !important;
            color: white !important;
        }
        /* Bot message bubble */
@@ -380,11 +380,35 @@
        }
        /* Buttons */
        .send-button, .action-button {
-           background-color: #2563eb !important;
+           background-color: #1e40af !important;
            color: white !important;
        }
        .send-button:hover, .action-button:hover {
-           background-color: #1e40af !important;
+           background-color: #1e3a8a !important;
+       }
+       /* Close button - multiple possible selectors */
+       .chat-close-button,
+       .close-button,
+       .widget-close,
+       [class*='close'],
+       [class*='Close'],
+       .crate-close,
+       #chat-close {
+           color: white !important;
+           filter: brightness(0) invert(1) !important;
+           opacity: 0.9 !important;
+           position: relative !important;
+           z-index: 10000 !important;
+       }
+       .chat-close-button:hover,
+       .close-button:hover,
+       .widget-close:hover,
+       [class*='close']:hover,
+       [class*='Close']:hover,
+       .crate-close:hover,
+       #chat-close:hover {
+           opacity: 1 !important;
+           transform: scale(1.1) !important;
        }`;
    document.head.appendChild(style);
 
