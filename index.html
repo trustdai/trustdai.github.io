@@ -96,7 +96,7 @@
         <div class="hero-text">
             <h1>Supercharge Your Marketing Efficiency with Conversational AI</h1>
             <p>Transform your marketing with AI-powered conversations that boost conversions and build trust</p>
-            <button class="cta-button" id="openChat">Get Started</button>
+            <a href="#start-chat" class="cta-button" id="openChat">Get Started</a>
         </div>
         <div class="hero-image">
             <img src="assets/AI_Lead_Management_Hero.png" alt="AI ChatBot Interface" />
@@ -570,12 +570,31 @@
         return false; // Prevent default link behavior
     }
 
-    // Add event listeners for all chat open buttons
+    // Function to handle hash changes
+    function handleHashChange() {
+        if (window.location.hash === '#start-chat') {
+            openChatWidget();
+        }
+    }
+
+    // Add event listeners for all chat open buttons and hash changes
     document.addEventListener('DOMContentLoaded', function() {
+        // Handle initial hash
+        if (window.location.hash === '#start-chat') {
+            openChatWidget();
+        }
+        
+        // Listen for hash changes
+        window.addEventListener('hashchange', handleHashChange);
+        
         // Get Started button
         const openChatBtn = document.getElementById('openChat');
         if (openChatBtn) {
-            openChatBtn.addEventListener('click', openChatWidget);
+            openChatBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.hash = 'start-chat';
+                openChatWidget();
+            });
         }
         
         // Contact links in navigation and footer
