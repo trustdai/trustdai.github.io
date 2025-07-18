@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrustdAI Chat Widget Test</title>
+    <link rel="icon" type="image/svg+xml" href="assets/trustdai_logo.svg">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .header {
+            background-color: #ffffff;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #2563eb;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            text-decoration: none;
+        }
+        .logo img {
+            height: 3.168rem;
+            width: auto;
+            position: relative;
+            top: 2px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #1e40af;
+            text-align: center;
+            grid-column: 2;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        button {
+            background-color: #1e40af;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #1e3a8a;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        .status {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            background-color: #f3f4f6;
+            border-left: 4px solid #1e40af;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <a href="/" class="logo" style="grid-column: 1;">
+                <img src="assets/trustdai_logo.svg" alt="TrustdAI Logo">
+                <span>TrustdAI</span>
+            </a>
+            <h1>Chat Widget Test</h1>
+            <div style="grid-column: 3;"></div> <!-- Empty div to balance the grid -->
+        </div>
+    </header>
+    <div style="margin-top: 80px;"></div> <!-- Add margin to account for fixed header -->
+    
+    <div class="container">
+        <div class="card">
+            <h2>Chat Widget Configuration</h2>
+            <div class="form-group">
+                <label for="tokenInput">API Token:</label>
+                <input type="text" id="tokenInput" placeholder="Enter your token here" value="trustdai_tk_2025_04_30_asw37s313za">
+            </div>
+            
+            <div class="button-group">
+                <button id="initializeButton">Initialize/Re-Initialize Widget</button>
+                <button id="openChatButton">Open Chat Widget</button>
+            </div>
+            
+            <div class="status" id="statusMessage">
+                Widget not initialized. Click "Initialize Widget" to start.
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Widget Script -->
+    <script src="https://d2ug12dkmgcsv2.cloudfront.net/chat-widget.js"></script>
+    <script>
+        let widgetInstance = null;
+        
+        // Default configuration values
+        const defaultConfig = {
+            primaryColor: '#1e40af',  /* Dark blue for primary elements */
+            secondaryColor: '#ffffff', /* White for text and secondary elements */
+            shadeColor: '#f3f4f6',    /* Light gray for backgrounds */
+            logoUrl: 'assets/trustdai_logo.svg',
+            backgroundUrl: 'https://d2ug12dkmgcsv2.cloudfront.net/bkgrnd_image.png',
+            headerText: 'Talk To Us',
+            apiBaseUrl: 'https://api.trustdai.in',
+            signInMessage: 'Sign in to get started'
+        };
+
+        // Function to initialize or re-initialize the chat widget
+        function initializeChatWidget() {
+            const token = document.getElementById('tokenInput').value.trim();
+            
+            if (!token) {
+                updateStatus('Error: Token is required', 'error');
+                return;
+            }
+            
+            // Destroy existing instance if it exists
+            if (widgetInstance) {
+                widgetInstance.destroy();
+                widgetInstance = null;
+            }
+            
+            // Create a style element to properly scope the chat widget styles
+            if (!document.getElementById('chat-widget-styles')) {
+                const style = document.createElement('style');
+                style.id = 'chat-widget-styles';
+                style.textContent = `
+                    /* Ensure the widget container is properly contained */
+                    #crate-widget {
+                        position: fixed;
+                        bottom: 0;
+                        right: 0;
+                        z-index: 9999;
+                        width: auto;
+                        height: auto;
+                        overflow: hidden;
+                    }
+                    /* Style the iframe to be contained within the widget */
+                    #crate-widget iframe {
+                        border: none !important;
+                        background: transparent !important;
+                        display: block;
+                    }
+                    /* Chat container */
+                    .chat-container, .messages-container {
+                        background-color: #f3f4f6 !important;
+                        background-image: url('${defaultConfig.backgroundUrl}') !important;
+                        background-size: cover !important;
+                        background-attachment: fixed !important;
+                    }
+                    /* Header */
+                    .chat-header {
+                        background-color: #1e40af !important;
+                        color: white !important;
+                    }
+                    /* User message bubble */
+                    .user-message {
+                        background-color: #1e40af !important;
+                        color: white !important;
+                    }
+                    /* Bot message bubble */
+                    .bot-message {
+                        background-color: white !important;
+                        color: #1f2937 !important;
+                    }
+                    /* Input area */
+                    .chat-input-container {
+                        background-color: white !important;
+                        border-top: 1px solid #e5e7eb !important;
+                    }
+                    /* Buttons */
+                    .send-button, .action-button {
+                        background-color: #1e40af !important;
+                        color: white !important;
+                    }
+                    .send-button:hover, .action-button:hover {
+                        background-color: #1e3a8a !important;
+                    }
+                    /* Close button - multiple possible selectors */
+                    .chat-close-button,
+                    .close-button,
+                    .widget-close,
+                    [class*='close'],
+                    [class*='Close'],
+                    .crate-close,
+                    #chat-close {
+                        color: white !important;
+                        filter: brightness(0) invert(1) !important;
+                        opacity: 0.9 !important;
+                        position: relative !important;
+                        z-index: 10000 !important;
+                    }
+                    .chat-close-button:hover,
+                    .close-button:hover,
+                    .widget-close:hover,
+                    [class*='close']:hover,
+                    [class*='Close']:hover,
+                    .crate-close:hover,
+                    #chat-close:hover {
+                        opacity: 1 !important;
+                        transform: scale(1.1) !important;
+                    }
+                    /* User message text - more specific targeting */
+                    .user-message,
+                    .user-message *,
+                    .user-message p,
+                    .user-message span,
+                    .user-message div,
+                    [class*='message'][class*='user'],
+                    [class*='message'][class*='sent'],
+                    [class*='bubble'][class*='user'],
+                    [class*='message-content'] {
+                        color: white !important;
+                        fill: white !important; /* For SVG icons */
+                    }
+                    /* Logout button */
+                    .logout-button,
+                    [class*='logout'],
+                    [class*='sign-out'],
+                    [class*='signout'] {
+                        color: white !important;
+                        border: 1px solid white !important;
+                        background-color: transparent !important;
+                    }
+                    /* User email display */
+                    .user-email,
+                    [class*='email'],
+                    [class*='user-info'],
+                    [class*='userInfo'],
+                    [class*='user-email'],
+                    [class*='userEmail'] {
+                        color: white !important;
+                        opacity: 0.9 !important;
+                    }
+                    /* Send button text */
+                    .send-button,
+                    [class*='send'],
+                    [class*='Send'],
+                    .action-button,
+                    [class*='button'] {
+                        color: white !important;
+                    }
+                    /* Input field text */
+                    .chat-input,
+                    [class*='input'],
+                    [class*='Input'],
+                    [class*='textInput'] {
+                        color: #1f2937 !important; /* Dark text for input */
+                    }
+                    
+                    /* Target only user messages, email, and send button */
+                    .user-message,
+                    [class*='user-message'],
+                    [class*='usermessage'],
+                    [class*='message'][class*='user'],
+                    [class*='message'][class*='sent'],
+                    .user-email,
+                    [class*='user-email'],
+                    [class*='userEmail'],
+                    [class*='email-display'],
+                    .send-button,
+                    [class*='send-button'],
+                    [class*='sendButton'] {
+                        color: white !important;
+                    }
+                    
+                    /* Ensure hero CTA button text is black */
+                    .hero .cta-button,
+                    #openChat {
+                        color: #1f2937 !important;
+                    }
+                    
+                    /* Ensure text in these elements is also white */
+                    .user-message *,
+                    [class*='user-message'] *,
+                    [class*='usermessage'] *,
+                    [class*='message'][class*='user'] *,
+                    [class*='message'][class*='sent'] * {
+                        color: white !important;
+                    }
+                    
+                    /* Keep input fields dark for better readability */
+                    input:not([class*='user']):not([class*='send']),
+                    textarea:not([class*='user']):not([class*='send']),
+                    [class*='input']:not([class*='user']):not([class*='send']),
+                    [class*='Input']:not([class*='user']):not([class*='send']) {
+                        color: #1f2937 !important;
+                    }`;
+                document.head.appendChild(style);
+            }
+
+            try {
+                // Initialize the widget with the provided token
+                widgetInstance = window.ChatWidget.initChatWidget({
+                    token: token,
+                    primaryColor: defaultConfig.primaryColor,
+                    secondaryColor: defaultConfig.secondaryColor,
+                    shadeColor: defaultConfig.shadeColor,
+                    logoUrl: defaultConfig.logoUrl || undefined,
+                    backgroundUrl: defaultConfig.backgroundUrl || undefined,
+                    apiBaseUrl: defaultConfig.apiBaseUrl,
+                    headerText: defaultConfig.headerText,
+                    signInMessage: defaultConfig.signInMessage,
+                    onLoad: function() {
+                        // Inject styles after the iframe loads
+                        const iframe = document.querySelector('#crate-widget iframe');
+                        if (iframe) {
+                            // Create a new style element for the iframe
+                            const iframeStyle = document.createElement('style');
+                            iframeStyle.textContent = `
+                                /* Chat container */
+                                .chat-container, .messages-container {
+                                    background-color: #f3f4f6 !important;
+                                    background-image: url('${defaultConfig.backgroundUrl}') !important;
+                                    background-size: cover !important;
+                                    background-attachment: fixed !important;
+                                }
+                                /* Header */
+                                .chat-header {
+                                    background-color: #2563eb !important;
+                                    color: white !important;
+                                }
+                                /* User message bubble */
+                                .user-message {
+                                    background-color: #2563eb !important;
+                                    color: white !important;
+                                }
+                                /* Bot message bubble */
+                                .bot-message {
+                                    background-color: white !important;
+                                    color: #1f2937 !important;
+                                }
+                                /* Input area */
+                                .chat-input-container {
+                                    background-color: white !important;
+                                    border-top: 1px solid #e5e7eb !important;
+                                }
+                                /* Buttons */
+                                .send-button, .action-button {
+                                    background-color: #2563eb !important;
+                                    color: white !important;
+                                }
+                                .send-button:hover, .action-button:hover {
+                                    background-color: #1e40af !important;
+                                }`;
+                            
+                            // Add a small delay to ensure iframe is fully loaded
+                            setTimeout(() => {
+                                if (iframe.contentDocument) {
+                                    iframe.contentDocument.head.appendChild(iframeStyle);
+                                }
+                            }, 500);
+                        }
+                    }
+                });
+                
+                updateStatus('Widget initialized successfully with token: ' + token.substring(0, 10) + '...', 'success');
+            } catch (error) {
+                updateStatus('Error initializing widget: ' + error.message, 'error');
+            }
+        }
+
+        // Function to open the chat widget
+        function openChatWidget() {
+            if (!widgetInstance) {
+                updateStatus('Widget not initialized. Please initialize first.', 'error');
+                return;
+            }
+            
+            try {
+                widgetInstance.open();
+                updateStatus('Widget opened successfully', 'success');
+            } catch (error) {
+                updateStatus('Error opening widget: ' + error.message, 'error');
+            }
+        }
+
+        // Function to update status message
+        function updateStatus(message, type = 'info') {
+            const statusElement = document.getElementById('statusMessage');
+            statusElement.textContent = message;
+            
+            // Reset classes
+            statusElement.style.borderLeftColor = '#1e40af'; // Default blue
+            
+            // Set color based on type
+            if (type === 'error') {
+                statusElement.style.borderLeftColor = '#dc2626'; // Red
+            } else if (type === 'success') {
+                statusElement.style.borderLeftColor = '#10b981'; // Green
+            }
+        }
+
+        // Add event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('initializeButton').addEventListener('click', initializeChatWidget);
+            document.getElementById('openChatButton').addEventListener('click', openChatWidget);
+            
+            // Initialize with default token on page load
+            initializeChatWidget();
+        });
+    </script>
+</body>
+</html>
