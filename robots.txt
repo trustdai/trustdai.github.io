@@ -1,19 +1,45 @@
 # TrustDAI Robots.txt
 # Last updated: 2025-08-28
 
+# Standard web crawlers
 User-agent: *
+Allow: /
+
+# AI and specialized crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 # Sitemap location
 Sitemap: https://trustdai.github.io/sitemap.xml
 
-# Disallow admin pages (if any)
+# Disallow sensitive areas
 Disallow: /admin/
 Disallow: /private/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
 
-# Allow all other pages
+# Allow all public content
 Allow: /*.html$
 Allow: /*.css$
 Allow: /*.js$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.svg$
 
-# Crawl-delay: 10  # Uncomment and adjust if needed to limit crawl rate
+# Crawl rate limiting (adjust as needed)
+# Crawl-delay: 10
+
+# Cache refresh rate (in seconds)
+# Cache-control: max-age=86400
