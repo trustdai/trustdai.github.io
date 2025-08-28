@@ -1,0 +1,19 @@
+# TrustDAI Robots.txt
+# Last updated: 2025-08-28
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://trustdai.github.io/sitemap.xml
+
+# Disallow admin pages (if any)
+Disallow: /admin/
+Disallow: /private/
+
+# Allow all other pages
+Allow: /*.html$
+Allow: /*.css$
+Allow: /*.js$
+
+# Crawl-delay: 10  # Uncomment and adjust if needed to limit crawl rate
