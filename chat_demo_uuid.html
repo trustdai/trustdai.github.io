@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrustdAI Chat Demo - UUID Auth</title>
+    <link rel="icon" type="image/svg+xml" href="assets/trustdai_logo.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        .demo-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .logo-section {
+            margin-bottom: 2rem;
+        }
+        
+        .logo-section img {
+            height: 4rem;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            color: #1e40af;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #1f2937;
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background-color: #f3f4f6;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #d1d5db;
+        }
+        
+        .feature-card h3 {
+            color: #1f2937;
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-card p {
+            color: #6b7280;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        
+        .cta-section {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: #f3f4f6;
+            border-radius: 0.5rem;
+            border-left: 4px solid #1e40af;
+        }
+        
+        .cta-section h2 {
+            color: #1e40af;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cta-section p {
+            color: #1f2937;
+            font-size: 1rem;
+        }
+        
+        .status-indicator {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background-color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 9998;
+            border: 1px solid #d1d5db;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .error-message {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #dc2626;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.375rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .demo-container {
+                padding: 2rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-message" id="errorMessage"></div>
+    
+    <div class="status-indicator" id="statusIndicator">
+        <div class="status-dot"></div>
+        <span>Chat Widget Active</span>
+    </div>
+    
+    <div class="demo-container">
+        <div class="logo-section">
+            <img src="assets/trustdai_logo.svg" alt="TrustdAI Logo">
+            <h1>Welcome to TrustdAI</h1>
+            <p class="subtitle">Experience seamless AI-powered conversations with our intelligent chat widget</p>
+        </div>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>🚀 Instant Setup</h3>
+                <p>No sign-in required. Start chatting immediately with UUID-based authentication.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔒 Secure</h3>
+                <p>Your conversations are private and securely stored with enterprise-grade encryption.</p>
+            </div>
+            <div class="feature-card">
+                <h3>💬 Smart AI</h3>
+                <p>Powered by advanced AI models for natural and helpful conversations.</p>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2>Ready to Chat?</h2>
+            <p>Click the chat icon in the bottom right corner to get started!</p>
+        </div>
+    </div>
+
+    <!-- Chat Widget Script from CDN -->
+    <script src="https://d2ug12dkmgcsv2.cloudfront.net/chat-widget.js"></script>
+    <script>
+        /**
+         * Initialize Chat Widget with URL Parameters
+         * 
+         * Supported URL Parameters:
+         * - token (required): API authentication token
+         * - primaryColor: Hex color for primary elements (default: #1e40af)
+         * - secondaryColor: Hex color for secondary elements (default: #ffffff)
+         * - shadeColor: Hex color for backgrounds (default: #f3f4f6)
+         * - logoUrl: URL to custom logo (default: assets/trustdai_logo.svg)
+         * - autoOpen: true/false (default: false) - Auto-open chat widget
+         * 
+         * Fixed Configuration:
+         * - enableGoogleAuth: false (UUID mode always)
+         * - headerText: 'Demo'
+         * - apiBaseUrl: 'https://api.trustdai.in'
+         * - backgroundUrl: 'https://d2ug12dkmgcsv2.cloudfront.net/bkgrnd_image.png'
+         * - signInMessage: 'Start chatting with us!'
+         * 
+         * Example Usage:
+         * chat_demo_uuid.html?token=trustdai_tk_xxx&primaryColor=%231e40af&autoOpen=true
+         */
+        
+        let widgetInstance = null;
+        
+        // Function to get URL parameters
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                token: params.get('token'),
+                enableGoogleAuth: false,
+                primaryColor: params.get('primaryColor') || '#1e40af',
+                secondaryColor: params.get('secondaryColor') || '#ffffff',
+                shadeColor: params.get('shadeColor') || '#f3f4f6',
+                logoUrl: params.get('logoUrl') || 'assets/trustdai_logo.svg',
+                backgroundUrl: 'https://d2ug12dkmgcsv2.cloudfront.net/bkgrnd_image.png',
+                apiBaseUrl: 'https://api.trustdai.in',
+                headerText:  params.get('headerText') || 'Demo',
+                signInMessage: 'Start chatting with us!',
+                autoOpen: params.get('autoOpen') === 'true'
+            };
+        }
+        
+        // Function to show error message
+        function showError(message) {
+            const errorElement = document.getElementById('errorMessage');
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+            
+            // Hide status indicator
+            document.getElementById('statusIndicator').style.display = 'none';
+            
+            // Auto-hide after 10 seconds
+            setTimeout(() => {
+                errorElement.style.display = 'none';
+            }, 10000);
+        }
+        
+        // Function to initialize the chat widget
+        function initializeChatWidget() {
+            const config = getUrlParams();
+            
+            // Validate required token
+            if (!config.token) {
+                showError('Error: Token parameter is required. Please add ?token=your_token to the URL');
+                return;
+            }
+            
+            try {
+                // Initialize the widget
+                widgetInstance = window.ChatWidget.initChatWidget({
+                    token: config.token,
+                    enableGoogleAuth: config.enableGoogleAuth,
+                    primaryColor: config.primaryColor,
+                    secondaryColor: config.secondaryColor,
+                    shadeColor: config.shadeColor,
+                    logoUrl: config.logoUrl,
+                    backgroundUrl: config.backgroundUrl,
+                    apiBaseUrl: config.apiBaseUrl,
+                    headerText: config.headerText,
+                    signInMessage: config.signInMessage
+                });
+                
+                console.log('✅ Chat widget initialized successfully');
+                console.log('Configuration:', {
+                    token: config.token.substring(0, 15) + '...',
+                    enableGoogleAuth: config.enableGoogleAuth,
+                    apiBaseUrl: config.apiBaseUrl,
+                    headerText: config.headerText,
+                    autoOpen: config.autoOpen
+                });
+                
+                // Auto-open chat widget if requested
+                if (config.autoOpen && widgetInstance) {
+                    // Small delay to ensure widget is fully loaded
+                    setTimeout(() => {
+                        try {
+                            widgetInstance.open();
+                            console.log('✅ Chat widget auto-opened');
+                        } catch (error) {
+                            console.error('❌ Error auto-opening chat widget:', error);
+                        }
+                    }, 1000);
+                }
+                
+            } catch (error) {
+                console.error('❌ Error initializing chat widget:', error);
+                showError('Error initializing chat widget: ' + error.message);
+            }
+        }
+        
+        // Initialize widget when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeChatWidget);
+        } else {
+            initializeChatWidget();
+        }
+        
+        // Expose widget instance globally for debugging
+        window.chatWidgetInstance = widgetInstance;
+    </script>
+</body>
+</html>
