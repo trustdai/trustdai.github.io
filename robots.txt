@@ -1,5 +1,5 @@
 # TrustDAI Robots.txt
-# Last updated: 2025-08-28
+# Last updated: 2025-03-10
 
 # Standard web crawlers
 User-agent: *
@@ -22,7 +22,7 @@ User-agent: Google-Extended
 Allow: /
 
 # Sitemap location
-Sitemap: https://trustdai.github.io/sitemap.xml
+Sitemap: https://trustdai.in/sitemap.xml
 
 # Disallow sensitive areas
 Disallow: /admin/
