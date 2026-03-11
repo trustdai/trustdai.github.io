@@ -98,13 +98,13 @@
       widgetInstance.destroy();
     }
 
-    var token = 'trustdai_tk_2025_04_30_asw37s313za';
+    var token = 'trustdai_tk_2026_03_11_hfr87J973FR';
     var primaryColor = '#1e40af';
     var secondaryColor = '#ffffff';
     var shadeColor = '#f3f4f6';
     var logoUrl = 'https://trustdai.in/assets/trustdai_logo.svg';
     var backgroundUrl = 'https://d2ug12dkmgcsv2.cloudfront.net/bkgrnd_image.png';
-    var headerText = 'Talk To Us';
+    var headerText = 'Trusty';
     var apiBaseUrl = 'https://api.trustdai.in';
     var signInMessage = 'Sign in to get started';
 
